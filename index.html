@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #ff4d6d;
+  --secondary: #ff758f;
+  --white: #ffffff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(120deg, var(--primary), var(--secondary));
+  color: var(--white);
+  overflow-x:hidden;
+}
+
+section {
+  min-height:100vh;
+  padding:60px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+h1,h2 {
+  font-family:'Great Vibes', cursive;
+  margin-bottom:20px;
+}
+
+button {
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:var(--primary);
+  cursor:pointer;
+  transition:.3s;
+  margin-top:20px;
+}
+
+button:hover { transform:scale(1.05); }
+
+/* HERO */
+#hero { background:rgba(0,0,0,0.2); }
+#typed-text { font-size:clamp(1.2rem,3vw,1.5rem); margin-top:20px; }
+
+/* TIMELINE */
+.timeline { max-width:800px; width:100%; }
+
+.timeline-item {
+  background:rgba(255,255,255,0.2);
+  padding:18px;
+  border-radius:15px;
+  margin:15px 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.timeline-item img {
+  width:100%;
+  max-width:400px;
+  margin-top:10px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.timeline-item img:hover { transform:scale(1.05); }
+
+/* GALERIA */
+.gallery {
+  width:100%;
+  max-width:1000px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+}
+
+.gallery img {
+  width:100%;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+/* MODAL */
+#modal {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#modal img {
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+
+/* CARTA */
+#letter {
+  display:none;
+  white-space:pre-line;
+  margin-top:20px;
+  max-width:800px;
+}
+
+/* ❤️ FLIP COUNTER (RESTAURADO ORIGINAL) */
+.flip-clock {
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:30px;
+}
+
+.time-box { text-align:center; }
+
+.flip {
+  position:relative;
+  width:90px;
+  height:110px;
+  perspective:1000px;
+}
+
+.flip .top,
+.flip .bottom {
+  position:absolute;
+  width:100%;
+  height:50%;
+  background:#fff;
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.5rem;
+  font-weight:bold;
+  border-radius:10px;
+  backface-visibility:hidden;
+}
+
+.flip .top { top:0; border-bottom:2px solid #eee; }
+.flip .bottom { bottom:0; transform:rotateX(180deg); }
+
+.flip.animate .top { animation:flipTop .5s forwards; }
+.flip.animate .bottom { animation:flipBottom .5s forwards; }
+
+@keyframes flipTop {
+  from { transform:rotateX(0deg); }
+  to { transform:rotateX(-180deg); }
+}
+
+@keyframes flipBottom {
+  from { transform:rotateX(180deg); }
+  to { transform:rotateX(0deg); }
+}
+
+/* CORAÇÕES */
+.heart {
+  position:fixed;
+  bottom:-10px;
+  animation:float 4s linear;
+  pointer-events:none;
+}
+
+@keyframes float {
+  from{ transform:translateY(0); opacity:1; }
+  to{ transform:translateY(-100vh); opacity:0; }
+}
+
+audio{ display:none; }
+
+#surprise{ display:none; margin-top:20px; font-size:1.2rem; }
+</style>
+</head>
+
+<body>
+
+<section id="hero">
+  <h1>Para Você ❤️</h1>
+  <div id="typed-text"></div>
+  <button onclick="scrollToSection('timeline')">Começar Nossa História</button>
+</section>
+
+<section id="timeline">
+  <h2>Nossa História</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <p>💑 Nosso primeiro encontro</p>
+      <img src="foto-primeiro.jpg" onclick="openModal(this.src)">
+      <img src="foto-segundo.jpg" onclick="openModal(this.src)">
+    </div>
+
+    <div class="timeline-item">
+      <p>💬 Nossa primeira conversa</p>
+      <img src="foto-terceiro.jpg" onclick="openModal(this.src)">
+      <img src="foto-quarto.jpg" onclick="openModal(this.src)">
+    </div>
+
+    <div class="timeline-item">
+      <p>✈️ Nossa primeira viagem</p>
+      <img src="foto-quinto.jpg" onclick="openModal(this.src)">
+    </div>
+
+    <div class="timeline-item">
+      <p>❤️ O dia em que tudo mudou</p>
+      <img src="foto-sexto.jpg" onclick="openModal(this.src)">
+      <img src="foto-setimo.jpg" onclick="openModal(this.src)">
+      <img src="foto-oitavo.jpg" onclick="openModal(this.src)">
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Nossos Momentos</h2>
+
+  <div class="gallery">
+    <img src="foto1.jpg" onclick="openModal(this.src)">
+    <img src="foto2.jpg" onclick="openModal(this.src)">
+    <img src="foto3.jpg" onclick="openModal(this.src)">
+    <img src="foto4.jpg" onclick="openModal(this.src)">
+    <img src="foto5.jpg" onclick="openModal(this.src)">    
+    <img src="foto6.jpg" onclick="openModal(this.src)"    
+    <img src="foto7.jpg" onclick="openModal(this.src)">
+    <img src="foto8.jpg" onclick="openModal(this.src)">
+  </div>
+</section>
+
+<div id="modal" onclick="closeModal()">
+  <img id="modal-img">
+</div>
+
+<section>
+  <h2>Minha Carta 💌</h2>
+  <button onclick="showLetter()">Ler Carta</button>
+  <div id="letter"></div>
+</section>
+
+<!-- ❤️ CONTADOR RESTAURADO -->
+<section id="love-counter">
+  <h2>Nosso Amor em Tempo Real ❤️</h2>
+
+  <div class="flip-clock">
+
+    <div class="time-box">
+      <div class="flip" id="days-flip">
+        <div class="top">0</div>
+        <div class="bottom">0</div>
+      </div>
+      <span>Dias</span>
+    </div>
+
+    <div class="time-box">
+      <div class="flip" id="hours-flip">
+        <div class="top">00</div>
+        <div class="bottom">00</div>
+      </div>
+      <span>Horas</span>
+    </div>
+
+    <div class="time-box">
+      <div class="flip" id="minutes-flip">
+        <div class="top">00</div>
+        <div class="bottom">00</div>
+      </div>
+      <span>Minutos</span>
+    </div>
+
+    <div class="time-box">
+      <div class="flip" id="seconds-flip">
+        <div class="top">00</div>
+        <div class="bottom">00</div>
+      </div>
+      <span>Segundos</span>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Uma Última Surpresa 🎁</h2>
+  <button onclick="showSurprise()">Clique Aqui</button>
+  <div id="surprise">Eu te amo mais do que tudo nesse mundo!! E cada dia Mais ❤️</div>
+</section>
+
+<audio id="music" src="musica.mp3"></audio>
+
+<script>
+const text="Desde o dia em que te conheci, tudo ficou mais bonito e Leve!! 💕";
+let index=0;
+
+function typeText(){
+ if(index<text.length){
+   document.getElementById("typed-text").innerHTML+=text.charAt(index);
+   index++; setTimeout(typeText,80);
+ }}
+typeText();
+
+/* 🎵 MÚSICA AO COMEÇAR HISTÓRIA */
+function scrollToSection(id){
+ document.getElementById(id).scrollIntoView({behavior:"smooth"});
+ const music=document.getElementById("music");
+ if(music.paused){
+   music.play().catch(()=>{});
+ }
+}
+
+/* MODAL */
+function openModal(src){
+ document.getElementById("modal").style.display="flex";
+ document.getElementById("modal-img").src=src;
+}
+function closeModal(){
+ document.getElementById("modal").style.display="none";
+}
+
+/* CARTA */
+function showLetter(){
+ document.getElementById("letter").style.display="block";
+ document.getElementById("letter").innerText="Eu te amo minha princesa  Você foi a pessoa mais incrível que entrou em minha vida Uma ótima Mãe uma esposa sensacional!! FELIZ 3 ANOS JUNTOOOOOOSSS!!!❤️";
+}
+
+/* SURPRESA */
+function showSurprise(){
+ document.getElementById("surprise").style.display="block";
+}
+
+/* ❤️ CONTADOR FLIP ORIGINAL */
+const startDate=new Date("2023-02-14T00:00:00");
+
+function updateFlip(id,value){
+ const flip=document.getElementById(id);
+ const top=flip.querySelector(".top");
+ const bottom=flip.querySelector(".bottom");
+
+ if(top.textContent==value) return;
+
+ flip.classList.remove("animate");
+ void flip.offsetWidth;
+
+ top.textContent=value;
+ bottom.textContent=value;
+
+ flip.classList.add("animate");
+}
+
+function updateCounter(){
+ const now=new Date();
+ const diff=now-startDate;
+
+ const days=Math.floor(diff/(1000*60*60*24));
+ const hours=Math.floor((diff/(1000*60*60))%24);
+ const minutes=Math.floor((diff/(1000*60))%60);
+ const seconds=Math.floor((diff/1000)%60);
+
+ updateFlip("days-flip",days);
+ updateFlip("hours-flip",hours.toString().padStart(2,"0"));
+ updateFlip("minutes-flip",minutes.toString().padStart(2,"0"));
+ updateFlip("seconds-flip",seconds.toString().padStart(2,"0"));
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
+
+/* CORAÇÕES */
+setInterval(()=>{
+ const heart=document.createElement("div");
+ heart.className="heart";
+ heart.innerHTML="❤️";
+ heart.style.left=Math.random()*100+"vw";
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),4000);
+},350);
+</script>
+
+</body>
+</html>
